@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Smart Commencement - 香港司法機構勞資審裁處</title>
+    <meta name="description" content="Smart Commencement: AI-powered service entry for Hong Kong Judiciary Labour Tribunal. Get guidance on labour disputes and tribunal procedures." />
+    <meta name="keywords" content="Hong Kong, Judiciary, Labour Tribunal, Smart Commencement, AI Chat" />
+    <meta property="og:title" content="Smart Commencement - Hong Kong Judiciary Labour Tribunal" />
+    <meta property="og:description" content="AI-powered service entry for labour dispute resolution" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Analytics script using Vite env (safe when undefined) -->
+    <script type="module">
+      const endpoint = import.meta.env.VITE_ANALYTICS_ENDPOINT;
+      const websiteId = import.meta.env.VITE_ANALYTICS_WEBSITE_ID;
+      if (typeof window !== 'undefined' && endpoint && websiteId) {
+        const script = document.createElement('script');
+        script.defer = true;
+        script.src = `${endpoint.replace(/\/$/, '')}/umami`;
+        script.setAttribute('data-website-id', websiteId);
+        document.body.appendChild(script);
+      }
+    </script>
+    <!-- Preload fonts for better performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Lora:wght@400;600;700&display=swap" as="style" />
+  </body>
+
+</html>

@@ -104,7 +104,7 @@ function getMockPersonalData(language: Language, role: PartyRole): PersonalData 
   return language === 'zh'
     ? {
         ldRefNo: 'LD-CLM-2026-0412',
-        claimantName: '陳小玲',
+        claimantName: '陳大文',
         claimants: '1',
         hkid: 'M123456(7)',
         address: '新界沙田乙明邨明信樓 8 樓 12 室',
@@ -112,7 +112,7 @@ function getMockPersonalData(language: Language, role: PartyRole): PersonalData 
       }
     : {
         ldRefNo: 'LD-CLM-2026-0412',
-        claimantName: 'Chan Siu Ling',
+        claimantName: 'CHAN Tai Man',
         claimants: '1',
         hkid: 'M123456(7)',
         address: 'Flat 12, 8/F, Ming Shun House, Jat Min Chuen, Sha Tin, New Territories',

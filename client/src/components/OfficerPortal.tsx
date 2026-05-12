@@ -15,6 +15,7 @@ import {
   Search,
 } from 'lucide-react';
 import { handleFontControlClick, initializeTextSize } from '../lib/accessibility';
+import { withBasePath } from '../lib/navigation';
 import Form1PreviewModal from './Form1PreviewModal';
 import Form2PreviewModal from './Form2PreviewModal';
 import Form3PreviewModal from './Form3PreviewModal';
@@ -1337,7 +1338,7 @@ export default function OfficerPortal({ onBack, language: initialLanguage = 'zh'
               {selectedCase ? t.backToQueue : t.back}
             </button>
             <div className="flex items-center gap-2 md:gap-0">
-              <img src="/logo.png" alt="Hong Kong Judiciary Logo" className="h-12 w-auto md:h-24" />
+              <img src={withBasePath('logo.png')} alt="Hong Kong Judiciary Logo" className="h-12 w-auto md:h-24" />
               <div
                 className="hidden md:block"
                 style={{

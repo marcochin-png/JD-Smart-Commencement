@@ -5,20 +5,21 @@ import AppointmentSuccess from './pages/AppointmentSuccess';
 import ELodgmentPortal from './pages/ELodgmentPortal';
 import AppointmentBooking from './pages/AppointmentBooking';
 import NotFound from './pages/NotFound';
+import { pushAppPath, toAppRelativePath } from './lib/navigation';
 
 function App() {
-  const [location, setLocation] = useState(window.location.pathname + window.location.search);
+  const [location, setLocation] = useState(toAppRelativePath(window.location.pathname) + window.location.search);
 
   const handleStartChat = (role: 'claimant' | 'defendant', language: 'zh' | 'en' = 'zh') => {
     const params = new URLSearchParams();
     params.set('lang', language);
     params.set('role', role);
-    window.history.pushState({}, '', `/chat?${params.toString()}`);
-    setLocation(window.location.pathname + window.location.search);
+    pushAppPath(`/chat?${params.toString()}`);
+    setLocation(toAppRelativePath(window.location.pathname) + window.location.search);
   };
 
   useEffect(() => {
-    const onPop = () => setLocation(window.location.pathname + window.location.search);
+    const onPop = () => setLocation(toAppRelativePath(window.location.pathname) + window.location.search);
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
   }, []);

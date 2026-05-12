@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Calendar, Clock, MapPin } from 'lucide-react';
 import { generateAppointmentDates } from '../lib/dateUtils';
 import { getTimeSlots, getLocations, Location } from '../constants/appointmentData';
+import { pushAppPath } from '../lib/navigation';
 
 interface AppointmentBookingProps {
   language: 'zh' | 'en';
@@ -47,8 +48,7 @@ function AppointmentBooking({ language, onClose, onComplete }: AppointmentBookin
         });
         return;
       }
-      window.history.pushState({}, '', `/appointment-success?lang=${language}`);
-      window.dispatchEvent(new PopStateEvent('popstate'));
+      pushAppPath(`/appointment-success?lang=${language}`);
     }, 1000);
   }, [selectedDate, selectedTime, selectedLocation, language, locations, onComplete]);
 

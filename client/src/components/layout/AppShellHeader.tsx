@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ArrowLeft, Menu, X } from 'lucide-react';
 import { handleFontControlClick } from '../../lib/accessibility';
+import { withBasePath } from '../../lib/navigation';
 
 type AppShellHeaderProps = {
   brandEyebrow: string;
@@ -57,8 +58,8 @@ export default function AppShellHeader({
             </button>
           ) : null}
 
-          <a href="/" className="flex items-center gap-2 text-inherit no-underline md:gap-0">
-            <img src="/logo.png" alt="Hong Kong Judiciary Logo" className="h-12 w-auto md:h-24" />
+          <a href={withBasePath('')} className="flex items-center gap-2 text-inherit no-underline md:gap-0">
+            <img src={withBasePath('logo.png')} alt="Hong Kong Judiciary Logo" className="h-12 w-auto md:h-24" />
             <div
               className="hidden md:block"
               style={{

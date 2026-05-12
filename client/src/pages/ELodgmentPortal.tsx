@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { RefreshCw, HelpCircle, CheckCircle, Menu, X, Globe, Type } from 'lucide-react';
 import { handleFontControlClick, initializeTextSize } from '../lib/accessibility';
 import AppShellHeader from '../components/layout/AppShellHeader';
+import { replaceAppLocation } from '../lib/navigation';
 
 type Step = 'tnc' | 'form' | 'success';
 
@@ -28,7 +29,7 @@ export default function ELodgmentPortal() {
 
   const handleBackToHome = () => {
     const params = new URLSearchParams(window.location.search);
-    window.location.href = `/?${params.toString()}`;
+    replaceAppLocation(`?${params.toString()}`);
   };
 
   const handleAcceptTNC = () => {

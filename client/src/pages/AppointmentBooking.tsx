@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X, Globe, Type } from "lucide-react";
 import { handleFontControlClick, initializeTextSize } from "../lib/accessibility";
 import AppShellHeader from "../components/layout/AppShellHeader";
+import { replaceAppLocation } from "../lib/navigation";
 
 type Step = 'intro' | 'input' | 'result' | 'verification' | 'confirmed';
 
@@ -164,7 +165,7 @@ export default function AppointmentBooking() {
   };
 
   const handleTerminate = () => {
-    window.location.href = '/';
+    replaceAppLocation('');
   };
 
   const handleVerification = () => {
@@ -520,7 +521,7 @@ export default function AppointmentBooking() {
       <div style={{ marginTop: '24px' }}>
         <button
           type="button"
-          onClick={() => window.location.href = '/'}
+          onClick={() => replaceAppLocation('')}
           style={{
             padding: '10px 24px',
             fontSize: '15px',

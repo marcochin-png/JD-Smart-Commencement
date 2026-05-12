@@ -4,6 +4,7 @@ import { handleFontControlClick, initializeTextSize } from '../lib/accessibility
 import AppShellHeader from '../components/layout/AppShellHeader';
 import OfficerPortal from '../components/OfficerPortal';
 import EvidenceComparison from '../components/EvidenceComparison';
+import { pushAppPath, replaceAppLocation } from '../lib/navigation';
 
 interface TranslationItem {
   icon: string;
@@ -608,8 +609,7 @@ export default function Home({ onStartChat }: HomeProps) {
                       className="action-card action-card-secondary hover-lift shimmer"
                       onClick={() => {
                         const encoded = encodeURIComponent(language === 'zh' ? '我被僱主拖欠薪金' : 'My employer owes me wages');
-                        window.history.pushState({}, '', `/chat?msg=${encoded}&lang=${language}`);
-                        window.dispatchEvent(new PopStateEvent('popstate'));
+                        pushAppPath(`/chat?msg=${encoded}&lang=${language}`);
                       }}
                       style={{
                         background: '#ffffff',
@@ -644,8 +644,7 @@ export default function Home({ onStartChat }: HomeProps) {
                       type="button"
                       className="action-card action-card-secondary hover-lift"
                       onClick={() => {
-                        window.history.pushState({}, '', `/chat?scenario=upload&lang=${language}`);
-                        window.dispatchEvent(new PopStateEvent('popstate'));
+                        pushAppPath(`/chat?scenario=upload&lang=${language}`);
                       }}
                       style={{
                         background: '#ffffff',
@@ -680,8 +679,7 @@ export default function Home({ onStartChat }: HomeProps) {
                       type="button"
                       className="action-card action-card-secondary hover-lift"
                       onClick={() => {
-                        window.history.pushState({}, '', `/chat?scenario=status&lang=${language}`);
-                        window.dispatchEvent(new PopStateEvent('popstate'));
+                        pushAppPath(`/chat?scenario=status&lang=${language}`);
                       }}
                       style={{
                         background: '#ffffff',
@@ -715,8 +713,7 @@ export default function Home({ onStartChat }: HomeProps) {
                       type="button"
                       className="action-card action-card-secondary hover-lift"
                       onClick={() => {
-                        window.history.pushState({}, '', `/chat?scenario=reschedule&lang=${language}`);
-                        window.dispatchEvent(new PopStateEvent('popstate'));
+                        pushAppPath(`/chat?scenario=reschedule&lang=${language}`);
                       }}
                       style={{
                         background: '#ffffff',
@@ -762,8 +759,7 @@ export default function Home({ onStartChat }: HomeProps) {
                 <button
                   type="button"
                   onClick={() => {
-                    window.history.pushState({}, '', `/elodgment?lang=${language}`);
-                    window.dispatchEvent(new PopStateEvent('popstate'));
+                    pushAppPath(`/elodgment?lang=${language}`);
                   }}
                   className="shimmer"
                   style={{
@@ -1339,7 +1335,7 @@ export default function Home({ onStartChat }: HomeProps) {
               <button
                 onClick={() => {
                   setJurisdictionModalOpen(false);
-                  window.location.href = `/appointment-booking?lang=${language}`;
+                  replaceAppLocation(`/appointment-booking?lang=${language}`);
                 }}
                 style={{
                   padding: '0.75rem 1.5rem',

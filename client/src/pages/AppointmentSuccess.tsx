@@ -3,6 +3,7 @@ import { Calendar, CheckCircle, Clock, MapPin, Phone } from 'lucide-react';
 import { initializeTextSize } from '../lib/accessibility';
 import AppShellHeader from '../components/layout/AppShellHeader';
 import { homeTypographyScale } from '../const';
+import { pushAppPath } from '../lib/navigation';
 
 type Language = 'zh' | 'en';
 type PartyRole = 'claimant' | 'defendant';
@@ -584,8 +585,7 @@ export default function AppointmentSuccess() {
               <button
                 type="button"
                 onClick={() => {
-                  window.history.pushState({}, '', '/');
-                  window.dispatchEvent(new PopStateEvent('popstate'));
+                  pushAppPath('');
                 }}
                 style={{
                   padding: '0.875rem 1.5rem',

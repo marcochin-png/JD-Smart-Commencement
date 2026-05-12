@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState, FormEvent } from 'react';
 import { ArrowLeft, Send, X, Calendar, Clock, MapPin, Check, Phone, Upload, FileText, CheckCircle, Info, AlertCircle, Menu, Globe, Type } from 'lucide-react';
 
 import { streamChat, sendAnalytics, regenerateSessionId } from '../lib/chat';
+import { pushAppPath, replaceAppLocation } from '../lib/navigation';
 
 import { handleFontControlClick, initializeTextSize } from '../lib/accessibility';
 
@@ -1556,7 +1557,7 @@ export default function Chat() {
 
   const handleReturnToMainMenu = (stepText: string): boolean => {
     if (stepText.includes('返回主目錄') || stepText.includes('Return to main menu') || stepText.includes('返回主選單')) {
-      window.location.href = '/';
+      replaceAppLocation('');
       return true;
     }
     return false;
@@ -3584,8 +3585,7 @@ export default function Chat() {
               setShowAppointmentBooking(false);
 
               if (currentScenario !== 'defendant_intake') {
-                window.history.pushState({}, '', `/appointment-success?lang=${language}`);
-                window.dispatchEvent(new PopStateEvent('popstate'));
+                pushAppPath(`/appointment-success?lang=${language}`);
                 return;
               }
 
@@ -3775,8 +3775,7 @@ export default function Chat() {
               onClick={() => {
                 sessionStorage.setItem('appointmentFlowRole', 'defendant');
                 setShowEvidencePopout(false);
-                window.history.pushState({}, '', `/appointment-success?lang=${language}&role=defendant`);
-                window.dispatchEvent(new PopStateEvent('popstate'));
+                pushAppPath(`/appointment-success?lang=${language}&role=defendant`);
               }}
             >
               {language === 'zh' ? '完成並查看預約詳情' : 'Finish & View Appointment'}

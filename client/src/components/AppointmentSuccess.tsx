@@ -2,6 +2,7 @@ import React from 'react';
 import { CheckCircle, Calendar, Clock, MapPin, AlertCircle, HelpCircle } from 'lucide-react';
 import { initializeTextSize } from '../lib/accessibility';
 import AppShellHeader from './layout/AppShellHeader';
+import { replaceAppLocation } from '../lib/navigation';
 
 interface AppointmentData {
   date: string;
@@ -74,7 +75,7 @@ const AppointmentSuccess: React.FC<AppointmentSuccessProps> = ({ appointmentData
         language={lang}
         onToggleLanguage={() => {
           const newLang = lang === 'zh' ? 'en' : 'zh';
-          window.location.href = `/appointment-booking?lang=${newLang}`;
+          replaceAppLocation(`/appointment-booking?lang=${newLang}`);
         }}
         desktopActions={(
           <button
@@ -231,7 +232,7 @@ const AppointmentSuccess: React.FC<AppointmentSuccessProps> = ({ appointmentData
             {/* Action Footer */}
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <button 
-                onClick={() => window.location.href = '/'}
+                onClick={() => replaceAppLocation('')}
                 style={{
                   background: '#012056',
                   color: '#FFFFFF',

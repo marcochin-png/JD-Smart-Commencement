@@ -151,8 +151,11 @@ function vitePluginManusDebugCollector(): Plugin {
 }
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
+const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'JD-Smart-Commencement';
+const isGitHubPagesBuild = process.env.GITHUB_PAGES === 'true' || process.env.VITE_DEPLOY_TARGET === 'github-pages';
 
 export default defineConfig({
+  base: isGitHubPagesBuild ? `/${repositoryName}/` : '/',
   plugins,
   resolve: {
     alias: {

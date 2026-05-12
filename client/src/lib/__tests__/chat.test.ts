@@ -10,4 +10,12 @@ describe('streamChat', () => {
 
     (global as any).fetch = orig;
   });
+
+  it('returns a standalone mock reply when VITE_STANDALONE_DEMO is enabled', async () => {
+    vi.stubEnv('VITE_STANDALONE_DEMO', 'true');
+
+    await expect(streamChat('hello world', { lang: 'en' })).resolves.toContain('Standalone demo mode is enabled for GitHub Pages');
+
+    vi.unstubAllEnvs();
+  });
 });
